@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 export class SearchFormFrom extends React.Component {
 
@@ -7,7 +7,7 @@ export class SearchFormFrom extends React.Component {
   }
 
   onSearchChange = e => {
-  this.setState({ searchText: e.target.value });
+    this.setState({ searchText: e.target.value });
   }
 
   handleSubmit = e => {
@@ -30,3 +30,5 @@ export class SearchFormFrom extends React.Component {
     );
   }
 }
+
+export default SearchFormFrom

@@ -20,7 +20,7 @@ class App extends Component {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
-          address: response.data.data
+          address: response.data.features
         });
       })
       .catch(error => {
