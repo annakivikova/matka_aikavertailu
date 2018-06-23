@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class SearchFormFrom extends React.Component {
+export class SearchFormFrom extends Component {
 
   state = {
     searchText: ''
