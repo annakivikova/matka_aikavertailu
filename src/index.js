@@ -3,16 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { NewMap } from './NewMap';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const MOUNT_NODE = document.getElementById('app')
 
-ReactDOM.render(
-  <NewMap />,
-  document.getElementById('container')
-);
+const render = () => {
+  const App = require('./App').default
+  ReactDOM.render(<App />, MOUNT_NODE)
+}
+
+render()
+
+if (module.hot) {
+  module.hot.accept(['./App'], () =>
+    setImmediate(() => {
+      ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+      render()
+    }),
+  )
+}
 
 registerServiceWorker();

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export class SearchFormFrom extends Component {
 
@@ -30,5 +31,3 @@ export class SearchFormFrom extends Component {
     );
   }
 }
-
-export default SearchFormFrom
