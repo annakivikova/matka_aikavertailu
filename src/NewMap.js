@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
 import { LeafletMap, TileLayer, Marker, Popup } from 'leaflet';
-// const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
 
-export class SimpleExample extends Component {
+export class NewMap extends Component {
   constructor() {
     super()
     this.state = {
@@ -27,8 +25,8 @@ export class SimpleExample extends Component {
           </Popup>
         </Marker>
       </LeafletMap>
-    );
+    )
   }
 }
 
-ReactDOM.render(<SimpleExample />, document.getElementById('mapid'))
+export default NewMap

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import { SearchFormFrom } from './Components/SearchFormFrom';
-import { MyComponent } from './Components/NewClass';
-// import { SimpleExample } from './Components/NewMap';
 
 export class App extends Component {
 
@@ -42,7 +40,6 @@ export class App extends Component {
         </p>
         <img src="https://cdn.digitransit.fi/map/v1/hsl-map/16/37311/18963@2x.png" />
         <SearchFormFrom onSearch={this.performSearch}/>
-        <MyComponent />
       </div>
     );
   }
