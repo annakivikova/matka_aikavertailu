@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { SearchFormFrom} from './SearchFormFrom';
+import { SearchFormFrom } from './SearchFormFrom';
 
-class Search extends Component {
+export class Search extends Component {
 
   constructor() {
     super();
@@ -25,18 +25,14 @@ class Search extends Component {
       .catch(error => {
         console.log('Osoitetta ei löytynyt', error);
       });
-    }
+  }
 
   render() {
+    console.log(this.state)
     return (
-      <div className="Search">
-        <p className="Search-intro">
-        Jotain.
-        </p>
-        <SearchFormFrom onSearch={this.performSearch}/>
+      <div>
+        <SearchFormFrom onSearch={this.performSearch} />
       </div>
     );
   }
 }
-
-export default Search;
