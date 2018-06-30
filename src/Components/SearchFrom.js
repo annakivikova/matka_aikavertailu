@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { SearchFormFrom } from './SearchFormFrom';
 
-export class Search extends Component {
+export class SearchFrom extends Component {
 
   constructor() {
     super();
@@ -19,7 +19,7 @@ export class Search extends Component {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
-          address: response.data.features
+          address: response.data.features[0].geometry.coordinates
         });
       })
       .catch(error => {
