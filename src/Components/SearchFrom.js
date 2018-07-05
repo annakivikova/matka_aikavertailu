@@ -3,7 +3,6 @@ import axios from 'axios';
 import { SearchFormFrom } from './SearchFormFrom';
 
 export class SearchFrom extends Component {
-
   constructor() {
     super();
     this.state = {
