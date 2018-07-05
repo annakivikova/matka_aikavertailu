@@ -7,7 +7,8 @@ export class SearchFrom extends Component {
   constructor() {
     super();
     this.state = {
-      address: ''
+      lngFrom: '',
+      latFrom: '',
     };
   }
 
@@ -19,7 +20,8 @@ export class SearchFrom extends Component {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
-          address: response.data.features[0].geometry.coordinates
+          lngFrom: response.data.features[0].geometry.coordinates[0],
+          latFrom: response.data.features[0].geometry.coordinates[1],
         });
       })
       .catch(error => {

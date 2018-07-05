@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import { App } from './App';
 
-const MOUNT_NODE = document.getElementById('app')
+ReactDOM.render(<App />, document.getElementById('app'));
+
+/*const MOUNT_NODE = document.getElementById('app')
 
 const render = () => {
   const App = require('./App').default
@@ -19,6 +22,6 @@ if (module.hot) {
       render()
     }),
   )
-}
+}*/
 
 registerServiceWorker();
