@@ -17,22 +17,24 @@ export class App extends React.Component {
 
     this.state = {
       latFrom: '',
+      lngFrom: '',
     }
   }
 
   onUpdate = (val) => {
     this.setState({
-      latFrom: val
+      latFrom: val,
+      lngFrom: val,
     })
   };
 
   render() {
-    const position = [this.state.latFrom, 24.93119]
+    const position = [this.state.latFrom, this.state.lngFrom]
     return (
       <div>
         <h1>Joku otsikko</h1>
         <h2>Ehkä kartta</h2>
-          <Map center ={position} zoom={13 /*this.state.zoom*/}>
+          <Map center ={position} zoom={13}>
             <TileLayer
                 attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
