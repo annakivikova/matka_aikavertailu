@@ -1,30 +1,33 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
-import { graphql } from 'react-apollo';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
-const getRouteQuery = gql`
-  {
-    routes(name: "58", modes: "BUS") {
-    id
-    agency {
-      id
+const Routing = () => (
+  <Query query={gql`
+    {
+      routes(name: "58", modes: "BUS") {
+        id
+        agency {
+          id
+        }
+        shortName
+        longName
+        desc
+      }
     }
-    shortName
-    longName
-    desc
-    }
-  }
-`
+  `}
+  >
+    {({loading, error, data}) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error</p>;
 
-class Routing extends Component {
-  render() {
-      console.log(this.props);
-    return (
-      <div>
-        <h6>Jotain</h6>
-      </div>
-    )
-  }
-}
+      return data.routes.map(({id, agency,shortName,longName,desc,}) => (
+        <div>
+          <p>{`${shortName}`}</p>
+        </div>
+      ))
+    }}
+  </Query>
+);
 
-export default graphql(getRouteQuery)(Routing);
+export default Routing;

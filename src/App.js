@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import { SearchFrom } from './Components/SearchFrom';
 import { SearchTo } from './Components/SearchTo';
-import Route from './Components/Route';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import Route from './Components/Route';
 
 export class App extends Component {
   constructor(props) {
