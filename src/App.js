@@ -3,33 +3,25 @@ import React, { Component } from 'react';
 import { SearchFrom } from './Components/SearchFrom';
 import { SearchTo } from './Components/SearchTo';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-//import { AppMap } from './Components/simple';
 
 export class App extends React.Component {
-  /*state = {
-    lat: 60.16887,
-    lng: 24.93119,
-    zoom: 13,
-  }*/
-
   constructor(props) {
     super(props);
-
     this.state = {
-      latFrom: '',
-      lngFrom: '',
+      updatedLatFrom: '',
+      updatedLngFrom: '',
     }
   }
 
-  onUpdate = (val) => {
+  onUpdate = (latFrom, lngFrom) => {
     this.setState({
-      latFrom: val,
-      lngFrom: val,
+      updatedLatFrom: latFrom,
+      updatedLngFrom: lngFrom,
     })
   };
 
   render() {
-    const position = [this.state.latFrom, this.state.lngFrom]
+    let position = [this.state.updatedLatFrom, this.state.updatedLngFrom]
     return (
       <div>
         <h1>Joku otsikko</h1>
@@ -47,24 +39,12 @@ export class App extends React.Component {
           </Map>
         <h2>Osoitteen haku</h2>
           <h3>Lähtöosoite</h3>
-            <SearchFrom search={this.onSearch}/>
+            <SearchFrom
+              onUpdate={this.onUpdate.bind(this)}
+            />
           <h3>Päämäärä</h3>
             <SearchTo />
       </div>
     )
   }
 }
-
-/*  render() {
-    return (
-      <div>
-        <h1>Joku otsikko</h1>
-        <h2>Ehkä kartta</h2>
-          <AppMap />
-        <h2>Osoitteen haku</h2>
-          <SearchFrom search={this.onSearchFrom}/>
-          <SearchTo />
-      </div>
-    )
-  }
-}*/

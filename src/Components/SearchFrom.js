@@ -3,8 +3,8 @@ import axios from 'axios';
 import { SearchFormFrom } from './SearchFormFrom';
 
 export class SearchFrom extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       lngFrom: '',
       latFrom: '',
@@ -28,11 +28,19 @@ export class SearchFrom extends Component {
       });
   }
 
+  onSearchUpdate() {
+    this.props.onUpdate(this.state.lngFrom);
+    this.props.onUpdate(this.state.latFrom);
+  }
+
   render() {
     console.log(this.state)
     return (
       <div>
-        <SearchFormFrom onSearch={this.performSearch} />
+        <SearchFormFrom
+          onSearch={this.performSearch}
+          onUpdate={this.onSearchUpdate.bind(this)}
+        />
       </div>
     );
   }
