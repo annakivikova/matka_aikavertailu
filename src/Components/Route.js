@@ -1,40 +1,21 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
-export default class Route extends React.Component {
-  state = {
-    name: '',
-  }
+const client = new ApolloClient({
+  uri: "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+});
 
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const user = {
-      name: this.state.name
-    };
-
-    axios.post(`https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql`, { user })
-      .then(response => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
+class Route extends Component {
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Person Name:
-            <input type="text" name="name" onChange={this.handleChange} />
-          </label>
-          <button type="submit">Add</button>
-        </form>
-      </div>
-    )
+      <ApolloProvider client={client}>
+        <div>
+          <h2>My first React Application</h2>
+        </div>
+      </ApolloProvider>
+    );
   }
 }
+
+export default Route;

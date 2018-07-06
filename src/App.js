@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { SearchFrom } from './Components/SearchFrom';
 import { SearchTo } from './Components/SearchTo';
+import Route from './Components/Route';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-export class App extends React.Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +45,7 @@ export class App extends React.Component {
             />
           <h3>Päämäärä</h3>
             <SearchTo />
+            <Route />
       </div>
     )
   }
