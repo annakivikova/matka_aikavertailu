@@ -19,7 +19,7 @@ export class AppMap extends Component {
 
   onUpdate = (lat) => {
     this.setState({
-      lat: this.props.lat
+      lat: this.props.updatedLat
     })
   };
 
@@ -27,6 +27,7 @@ export class AppMap extends Component {
     /*let lat = this.props.lat;
     let lng = 24.945831;
     let position = [lat, lng];*/
+    console.log([this.state.lat, 24.945831])
     let position = [this.state.lat, 24.945831] /*[60.192059, 24.945831]*/
     return (
       <Map center ={position} zoom={13}>
