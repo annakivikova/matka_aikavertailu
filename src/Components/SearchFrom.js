@@ -29,13 +29,13 @@ export class SearchFrom extends Component {
       });
   }
 
-  onSearchUpdate = (e) => {
-    const lat = e.target.value;
+  onSearchUpdate() {
+    const lat = this.props.lat;
     this.props.onChange(lat);
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div onChange={this.onSearchUpdate}>
         <SearchFormFrom

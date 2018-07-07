@@ -8,8 +8,8 @@ export class AppMap extends Component {
     zoom: 13,
   }*/
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onUpdate = this.onUpdate.bind(this);
     this.state = {
       lat: '',
@@ -24,7 +24,10 @@ export class AppMap extends Component {
   };
 
   render() {
-    let position = [this.state.lat, this.state.lng] /*[60.192059, 24.945831]*/
+    /*let lat = this.props.lat;
+    let lng = 24.945831;
+    let position = [lat, lng];*/
+    let position = [this.state.lat, 24.945831] /*[60.192059, 24.945831]*/
     return (
       <Map center ={position} zoom={13}>
           <TileLayer

@@ -29,9 +29,9 @@ const Routing = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error</p>;
 
-      return data.plan.itineraries.map(({itineraries}) => (
+      return data.plan.map(({legs}) => (
         <div>
-          <p>{`${itineraries}`}</p>
+          <p>{`${legs}`}</p>
         </div>
       ))
     }}
@@ -39,3 +39,12 @@ const Routing = () => (
 );
 
 export default Routing;
+
+/*{
+  stops(name: "4040") {
+    id
+    name
+    wheelchairBoarding
+  }
+}data.stops.map(({id, name, wheelChairBoarding,})
+*/
