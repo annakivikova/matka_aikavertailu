@@ -11,32 +11,30 @@ export class App extends Component {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
     this.state = {
-      lat: '',
-      /*lng: '',*/
+      lat: ''
     }
   }
 
-  onUpdate = (latFrom /*lngFrom*/) => {
+  onUpdate(newLat) {
     this.setState({
-      lat: latFrom,
-      /*lng: lngFrom,*/
-    })
-  };
+      lat: newLat
+    });
+  }
 
   render() {
-    const lat = this.props.lat
+    /*const lat = this.props.lat*/
     /*const lng = this.props.lng*/
     return (
       <div>
         <h1>Joku otsikko</h1>
         <h2>Ehkä kartta</h2>
           <AppMap
-            /*passedVal={this.props.lat}*/
+            lat={this.state.lat}
           />
         <h2>Osoitteen haku</h2>
         <h3>Lähtöosoite</h3>
           <SearchFrom
-            onUpdate={this.onUpdate}
+            onChange={this.onUpdate}
           />
         <h3>Päämäärä</h3>
           <SearchTo />

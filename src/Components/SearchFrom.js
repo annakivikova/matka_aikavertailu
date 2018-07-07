@@ -30,20 +30,16 @@ export class SearchFrom extends Component {
   }
 
   onSearchUpdate = (e) => {
-    /*this.props.onUpdate(this.state.lngFrom);*/
-    console.log(e.target.value);
-    this.props.onUpdate(e.target.value);
-    this.setState({lat: e.target.value});
+    const lat = e.target.value;
+    this.props.onChange(lat);
   }
 
   render() {
     console.log(this.state)
     return (
-      <div>
+      <div onChange={this.onSearchUpdate}>
         <SearchFormFrom
           onSearch={this.performSearch}
-          onChange={this.update}
-          value={this.state.lat}
         />
       </div>
     );
