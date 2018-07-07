@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { SearchFrom } from './Components/SearchFrom';
 //import { SearchTo } from './Components/SearchTo';
-import Route from './Components/Route';
+//import Route from './Components/Route';
 import { AppMap } from './Components/simple';
 
 export class App extends Component {
@@ -11,13 +11,13 @@ export class App extends Component {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
     this.state = {
-      lat: ''
+      updatedLat: ''
     }
   }
 
   onUpdate(lat) {
     this.setState({
-      lat: lat
+      updatedLat: lat
     });
   }
 
