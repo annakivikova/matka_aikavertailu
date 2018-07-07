@@ -2,50 +2,44 @@ import React, { Component } from 'react';
 
 import { SearchFrom } from './Components/SearchFrom';
 import { SearchTo } from './Components/SearchTo';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import Route from './Components/Route';
+//import Route from './Components/Route';
+import { AppMap } from './Components/simple';
 
 export class App extends Component {
+
   constructor(props) {
     super(props);
+    this.onUpdate = this.onUpdate.bind(this);
     this.state = {
-      updatedLatFrom: '',
-      updatedLngFrom: '',
+      lat: '',
+      /*lng: '',*/
     }
   }
 
-  onUpdate = (latFrom, lngFrom) => {
+  onUpdate = (latFrom /*lngFrom*/) => {
     this.setState({
-      updatedLatFrom: latFrom,
-      updatedLngFrom: lngFrom,
+      lat: latFrom,
+      /*lng: lngFrom,*/
     })
   };
 
   render() {
-    let position = [this.state.updatedLatFrom, this.state.updatedLngFrom]
+    const lat = this.props.lat
+    /*const lng = this.props.lng*/
     return (
       <div>
         <h1>Joku otsikko</h1>
         <h2>Ehkä kartta</h2>
-          <Map center ={position} zoom={13}>
-            <TileLayer
-                attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          </Map>
+          <AppMap
+            /*passedVal={this.props.lat}*/
+          />
         <h2>Osoitteen haku</h2>
-          <h3>Lähtöosoite</h3>
-            <SearchFrom
-              onUpdate={this.onUpdate.bind(this)}
-            />
-          <h3>Päämäärä</h3>
-            <SearchTo />
-            <Route />
+        <h3>Lähtöosoite</h3>
+          <SearchFrom
+            onUpdate={this.onUpdate}
+          />
+        <h3>Päämäärä</h3>
+          <SearchTo />
       </div>
     )
   }

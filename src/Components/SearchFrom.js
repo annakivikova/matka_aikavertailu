@@ -5,9 +5,10 @@ import { SearchFormFrom } from './SearchFormFrom';
 export class SearchFrom extends Component {
   constructor(props) {
     super(props);
+    this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.state = {
-      lngFrom: '',
-      latFrom: '',
+      lng: '',
+      lat: '',
     };
   }
 
@@ -19,8 +20,8 @@ export class SearchFrom extends Component {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
-          lngFrom: response.data.features[0].geometry.coordinates[0],
-          latFrom: response.data.features[0].geometry.coordinates[1],
+          lng: response.data.features[0].geometry.coordinates[0],
+          lat: response.data.features[0].geometry.coordinates[1],
         });
       })
       .catch(error => {
@@ -28,9 +29,11 @@ export class SearchFrom extends Component {
       });
   }
 
-  onSearchUpdate() {
-    this.props.onUpdate(this.state.lngFrom);
-    this.props.onUpdate(this.state.latFrom);
+  onSearchUpdate = (e) => {
+    /*this.props.onUpdate(this.state.lngFrom);*/
+    console.log(e.target.value);
+    this.props.onUpdate(e.target.value);
+    this.setState({lat: e.target.value});
   }
 
   render() {
@@ -39,7 +42,8 @@ export class SearchFrom extends Component {
       <div>
         <SearchFormFrom
           onSearch={this.performSearch}
-          onUpdate={this.onSearchUpdate.bind(this)}
+          onChange={this.update}
+          value={this.state.lat}
         />
       </div>
     );
