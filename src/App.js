@@ -11,19 +11,17 @@ export class App extends Component {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
     this.state = {
-      updatedLat: ''
+      updatedPos: ''
     }
   }
 
-  onUpdate(lat) {
+  onUpdate(pos) {
     this.setState({
-      updatedLat: lat
+      updatedPos: pos
     });
   }
 
   render() {
-    /*const lat = this.props.lat*/
-    /*const lng = this.props.lng*/
     return (
       <div>
         <h3>Lähtöosoite</h3>
@@ -31,7 +29,7 @@ export class App extends Component {
             onChange={this.onUpdate}
           />
           <AppMap
-            lat={this.state.lat}
+            onUpdate={this.state.updatedPos}
           />
       </div>
     )

@@ -30,8 +30,7 @@ export class SearchFrom extends Component {
   }
 
   onSearchUpdate() {
-    const lat = 60.192059;
-    this.props.onChange(lat);
+    this.props.onChange([this.state.lat,this.state.lng]);
     //this.setState({lat: this.state.lat});
   }
 
