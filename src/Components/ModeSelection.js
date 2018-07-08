@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-export class Modes extends Component {
+export default class Mode extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -10,7 +10,7 @@ export class Modes extends Component {
   handleChange(e) {
     const mode = e.target.value;
     this.props.onChange(mode);
-  }
+  }*/
 
   render() {
     return(

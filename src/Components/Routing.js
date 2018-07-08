@@ -3,69 +3,37 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const Routing = (props) => (
-  console.log('This is coords in Routing: ' + props.passCoordsDown),
-  <Query query={gql`
-    {
-      plan(
-        from: {lat: 60.199196699999995, lon: 24.9397302}
-        to: {lat: 60.168438, lon: 24.929283}
-        numItineraries: 1
-        modes: "BUS,TRAM,RAIL,SUBWAY,FERRY,WALK"
-      ) {
-        itineraries {
-          duration
+  console.log('this is coords in Routing: ' + props.passCoordsDown),
+  console.log('1st coord: ' + props.passCoordsDown[0][0]),
+    <Query
+      query={gql`
+        {
+          plan(
+            from: {lat: ${props.passCoordsDown[0][0]}, lon: ${props.passCoordsDown[0][1]}}
+            to: {lat: ${props.passCoordsDown[1][0]}, lon: ${props.passCoordsDown[1][1]}}
+            numItineraries: 1
+            modes: "WALK,RAIL"
+          ) {
+            itineraries {
+              duration
+            }
+          }
         }
-      }
-    }
-  `}
-  >
-    {({loading, error, data}) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error</p>;
+      `}
+      >
+        {({loading, error, data}) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error</p>;
 
-      console.log(data.plan.itineraries.duration);
-
-      return (
-        <div>
-          <p>
-            {`Route: ${data.plan.itineraries[0].duration}`}
-          </p>
-        </div>
-      );
-    }}
-  </Query>
-);
+          return (
+            <div>
+              <p>
+                {`${data.plan.itineraries[0].duration}`}
+              </p>
+            </div>
+          );
+        }}
+    </Query>
+  );
 
 export default Routing;
-
-
-/*const Routing = () => (
-  <Query query={gql`
-    {
-      stop(id: "HSL:1040129") {
-        name
-        lat
-        lon
-        wheelchairBoarding
-      }
-    }
-  `}
-  >
-    {({loading, error, data}) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error</p>;
-
-      console.log(data.stop.name, data.stop.lat, data.stop.lon);
-
-      return (
-        <div>
-          <p>
-            {`${data.stop.name}: ${data.stop.lat} ${data.stop.lon}`}
-          </p>
-        </div>
-      );
-    }}
-  </Query>
-);
-
-export default Routing;*/
