@@ -10,6 +10,7 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
+    this.onUpdateTo = this.onUpdateTo.bind(this);
     this.state = {
       updatedPos: '',
       updatedPosTo: '',
@@ -29,7 +30,7 @@ export class App extends Component {
   }
 
   render() {
-    console.log('updatedPos in component App is: ' + this.state.updatedPos);
+    console.log('updatedPos in component App is: ' + this.state.updatedPos + 'updatedPosTo in component App is: ' + this.state.updatedPosTo);
     return (
       <div>
         <h3>Lähtöosoite</h3>
