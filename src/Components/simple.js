@@ -14,12 +14,15 @@ export class AppMap extends Component {
           />
         <Marker position={position}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            Lähtöosoite
+          </Popup>
+        </Marker>
+        <Marker position={[60.168438, 24.9397302]}>
+          <Popup>
+            Kohdeosoite
           </Popup>
         </Marker>
       </Map>
     )
   }
 }
-
-//[60.16883, 24.931215]
