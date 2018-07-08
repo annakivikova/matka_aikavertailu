@@ -4,8 +4,8 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 export class AppMap extends Component {
 
   render() {
-
-    let position = this.props.onUpdate
+    let position = this.props.onUpdate;
+    console.log('Map: ' + position);
     return (
       <Map center={position} zoom={13}>
           <TileLayer
@@ -17,9 +17,9 @@ export class AppMap extends Component {
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
-        <Marker position={[60.20, 25.0]}>
-        </Marker>
       </Map>
     )
   }
 }
+
+//[60.16883, 24.931215]

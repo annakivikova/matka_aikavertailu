@@ -3,9 +3,9 @@ import axios from 'axios';
 import { SearchFormTo } from './SearchFormTo';
 
 export class SearchTo extends Component {
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.state = {
       lng: '',
       lat: '',
@@ -29,11 +29,17 @@ export class SearchTo extends Component {
       });
   }
 
+  onSearchUpdate() {
+    this.props.onChange([this.state.lat, this.state.lng]);
+  }
+
   render() {
-    console.log(this.state)
+    console.log('pos in component SearchTo is: lat ' + this.state.lat + ' and lng ' + this.state.lng);
     return (
-      <div>
-        <SearchFormTo onSearch={this.performSearch} />
+      <div onChange={this.onSearchUpdate}>
+        <SearchFormTo
+          onSearch={this.performSearch}
+        />
       </div>
     );
   }

@@ -7,8 +7,8 @@ export class SearchFrom extends Component {
     super(props);
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.state = {
-      lng: '',
       lat: '',
+      lng: '',
     };
   }
 
@@ -20,8 +20,8 @@ export class SearchFrom extends Component {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
-          lng: response.data.features[0].geometry.coordinates[0],
           lat: response.data.features[0].geometry.coordinates[1],
+          lng: response.data.features[0].geometry.coordinates[0],
         });
       })
       .catch(error => {
@@ -30,12 +30,11 @@ export class SearchFrom extends Component {
   }
 
   onSearchUpdate() {
-    this.props.onChange([this.state.lat,this.state.lng]);
-    //this.setState({lat: this.state.lat});
+    this.props.onChange([this.state.lat, this.state.lng]);
   }
 
   render() {
-    console.log(this.state);
+    console.log('pos in component SearchFrom is: lat ' + this.state.lat + ' and lng ' + this.state.lng);
     return (
       <div onChange={this.onSearchUpdate}>
         <SearchFormFrom
