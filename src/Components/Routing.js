@@ -28,7 +28,7 @@ const Routing = (props) => (
           return (
             <div>
               <p>
-                {`${data.plan.itineraries[0].duration}`}
+                {`Matka-aika: ${data.plan.itineraries[0].duration}`}
               </p>
             </div>
           );

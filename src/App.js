@@ -43,6 +43,7 @@ export class App extends Component {
           />
           <AppMap
             onUpdate={this.state.updatedPos}
+            onUpdateTo={this.state.updatedPosTo}
           />
           <Route
             passCoords={[this.state.updatedPos, this.state.updatedPosTo]}

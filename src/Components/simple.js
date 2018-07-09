@@ -5,6 +5,7 @@ export class AppMap extends Component {
 
   render() {
     let position = this.props.onUpdate;
+    let positionTo = this.props.onUpdateTo;
     console.log('Map: ' + position);
     return (
       <Map center={position} zoom={13}>
@@ -17,7 +18,7 @@ export class AppMap extends Component {
             Lähtöosoite
           </Popup>
         </Marker>
-        <Marker position={[60.168438, 24.9397302]}>
+        <Marker position={positionTo}>
           <Popup>
             Kohdeosoite
           </Popup>
