@@ -2,41 +2,48 @@ import React, { Component } from 'react';
 
 export class SearchForm extends Component {
 
-  state = {
-    searchTextFrom: '',
-    searchTextTo: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchFrom: '',
+      searchTo: '',
+    }
+    //this.onSearchChange = this.onSearchChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSearchChange = e => {
-    this.setState({ searchTextFrom: e.target.value });
-    this.setState({ searchTextTo: e.target.value });
+/*  onSearchChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.query.value);
     e.currentTarget.reset();
+  }*/
+
+  handleSubmit(event) {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   render() {
     return (
-      <form className="search-form" onSubmit={this.handleSubmit}>
+      <form>
 
-        <label className="addressFrom" htmlFor="search">Lähtöosoite</label>
-        <input type="search"
-              onChange={this.onSearchChange}
-              name="search"
-              ref={(input) => this.query = input}
+        <label>Lähtöosoite</label>
+        <input type="text"
+              onSubmit={this.handleSubmit}
+              name="searchFrom"
               placeholder="Search..." />
 
-        <label className="adressTo" htmlFor="search">Kohdeosoite</label>
-        <input type="searvh"
-              onChange={this.onSearchChange}
-              name="search"
-              ref={(input) => this.query = input}
+        <label>Kohdeosoite</label>
+        <input type="text"
+              onSubmit={this.handleSubmit}
+              name="searchTo"
               placeholder="Search..." />
 
         <button type="submit" id="submit" className="search-button"><i className="material-icons icn-search">search</i></button>
+
       </form>
     );
   }
