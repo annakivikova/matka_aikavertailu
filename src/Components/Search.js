@@ -3,8 +3,8 @@ import axios from 'axios';
 import { SearchForm } from './SearchForm';
 
 export class Search extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.state = {
       latFrom: '',
@@ -15,16 +15,18 @@ export class Search extends Component {
   }
 
   componentDidMount() {
-    this.performSearchFrom();
-    this.performSearchTo();
+    this.performSearch();
+    //this.performSearchTo();
   }
 
-  performSearchFrom = (query) => {
+  performSearch = (query) => {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
           latFrom: response.data.features[0].geometry.coordinates[1],
           lngFrom: response.data.features[0].geometry.coordinates[0],
+          latTo: response.data.features[0].geometry.coordinates[1],
+          lngTo: response.data.features[0].geometry.coordinates[0],
         });
       })
       .catch(error => {
@@ -32,7 +34,7 @@ export class Search extends Component {
       });
   }
 
-  performSearchTo = (query) => {
+  /*performSearchTo = (query) => {
     axios.get(`https://api.digitransit.fi/geocoding/v1/search?text=${query}&size=1`)
       .then(response => {
         this.setState({
@@ -43,7 +45,7 @@ export class Search extends Component {
       .catch(error => {
         console.log('Osoitetta ei löytynyt', error);
       });
-  }
+  }*/
 
   onSearchUpdate() {
     this.props.onChange([this.state.latFrom, this.state.lngFrom]);
@@ -53,10 +55,9 @@ export class Search extends Component {
   render() {
     console.log('pos in component SearchFrom is: lat ' + this.state.latFrom + ' and lng ' + this.state.lngFrom + ' pos in component SearchTo is: lat ' + this.state.latTo + ' and lng ' + this.state.lngTo);
     return (
-      <div onSubmit={this.handleSubmit}>
+      <div onChange={this.onSearchUpdate}>
         <SearchForm
-          onSearch={this.performSearchFrom}
-          onSearch={this.performSearchTo}
+          onSearch={this.performSearch}
         />
       </div>
     );

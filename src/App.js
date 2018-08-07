@@ -11,21 +11,21 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
-    //this.onUpdateTo = this.onUpdateTo.bind(this);
+    this.onUpdateTo = this.onUpdateTo.bind(this);
     this.state = {
       updatedPos: '',
       updatedPosTo: '',
     }
   }
 
-  onUpdate(positionFrom, positionTo) {
+/*  onUpdate(positionFrom, positionTo) {
     this.setState({
       updatedPos: positionFrom,
       updatedPosTo: positionTo,
     })
-  }
+  }*/
 
-/*  onUpdate(pos) {
+  onUpdate(pos) {
     this.setState({
       updatedPos: pos
     });
@@ -35,7 +35,7 @@ export class App extends Component {
     this.setState({
       updatedPosTo: pos
     });
-  }*/
+  }
 
   render() {
     console.log('updatedPos in component App is: ' + this.state.updatedPos + 'updatedPosTo in component App is: ' + this.state.updatedPosTo);
@@ -49,6 +49,7 @@ export class App extends Component {
           <AppMap
             onUpdate={this.state.updatedPos}
             onUpdateTo={this.state.updatedPosTo}
+
           />
           <Route
             passCoords={[this.state.updatedPos, this.state.updatedPosTo]}
@@ -73,6 +74,7 @@ export class App extends Component {
         onUpdate={this.state.updatedPos}
         onUpdateTo={this.state.updatedPosTo}
       />
+      
       <Route
         passCoords={[this.state.updatedPos, this.state.updatedPosTo]}
       />

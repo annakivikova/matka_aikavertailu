@@ -3,6 +3,26 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 export class AppMap extends Component {
 
+/*  constructor() {
+    super()
+    this.updateMap = this.updateMap.bind(this);
+    this.state = {
+      position: [],
+      positionTo: [],
+    };
+  }
+
+  updateMap = () => {
+    this.setState({
+      position: this.props.onUpdate,
+      positionTo: this.props.onUpdateTo,
+    })
+  }
+
+  componentDidMount() {
+    this.updateMap();
+  }*/
+
   render() {
     let position = this.props.onUpdate;
     let positionTo = this.props.onUpdateTo;

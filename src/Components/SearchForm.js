@@ -8,11 +8,11 @@ export class SearchForm extends Component {
       searchFrom: '',
       searchTo: '',
     }
-    //this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-/*  onSearchChange = e => {
+  onSearchChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -20,29 +20,31 @@ export class SearchForm extends Component {
     e.preventDefault();
     this.props.onSearch(this.query.value);
     e.currentTarget.reset();
-  }*/
+  }
 
-  handleSubmit(event) {
-    //event.preventDefault;
+  /*handleSubmit(event) {
+    event.preventDefault;
     this.setState({ [event.target.name]: event.target.value });
     console.log(event.target.name);
     console.log(event.target.value);
-  }
+  }*/
 
   render() {
     return (
-      <form>
+      <form className="search-form" onSubmit={this.handleSubmit}>
 
         <label>Lähtöosoite</label>
         <input type="text"
-              onSubmit={this.handleSubmit}
+              onChange={this.onSearchChange}
               name="searchFrom"
+              ref={(input) => this.query = input}
               placeholder="Search..." />
 
         <label>Kohdeosoite</label>
         <input type="text"
-              onSubmit={this.handleSubmit}
+              onChange={this.onSearchChange}
               name="searchTo"
+              ref={(input) => this.query = input}
               placeholder="Search..." />
 
         <button type="submit" id="submit" className="search-button"><i className="material-icons icn-search">search</i></button>
