@@ -17,10 +17,10 @@ export class Route extends Component {
 
   handleUpdatedCoordinates() {
       this.setState({
-      position: this.props.onUpdate,
-      positionTo: this.props.onUpdateTo,
+      position: this.props.passCoords[0],
+      positionTo: this.props.passCoords[1],
     })
-    console.log("PROPS POS"+this.props.onUpdate)
+    console.log("PROPS ROUTE"+this.props.passCoords)
   }
 
   render() {

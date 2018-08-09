@@ -24,6 +24,7 @@ export class App extends Component {
       updatedPos: pos,
     });
     this.refs.appmap.handleUpdatedPosition();
+    this.refs.route.handleUpdatedCoordinates();
     }
 
 
@@ -32,6 +33,7 @@ export class App extends Component {
       updatedPosTo: pos
     });
     this.refs.appmap.handleUpdatedPosition();
+    this.refs.route.handleUpdatedCoordinates();
   }
 
   render() {
@@ -48,6 +50,7 @@ export class App extends Component {
           />
 
           <Route
+            ref="route"
             passCoords={[this.state.updatedPos, this.state.updatedPosTo]}
           />
 
