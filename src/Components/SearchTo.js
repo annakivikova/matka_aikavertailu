@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { SearchFormTo } from './SearchFormTo';
 
-export class SearchTo extends Component {
+class SearchTo extends Component {
   constructor(props) {
     super(props);
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.state = {
-      lng: '',
-      lat: '',
+      lat: 60.16887,
+      lng: 24.93119,
     };
   }
 
@@ -44,3 +44,5 @@ export class SearchTo extends Component {
     );
   }
 }
+
+export default SearchTo;

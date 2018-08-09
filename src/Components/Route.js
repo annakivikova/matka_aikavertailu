@@ -9,18 +9,6 @@ const client = new ApolloClient({
 });
 
 export class Route extends Component {
-  /*constructor(props) {
-    super(props);
-    this.changeMode = this.changeMode.bind(this);
-    this.state = {
-      mode: ''
-    }
-
-    changeMode(newMode) {
-      this.setState({
-        mode: newMode
-      });
-    }*/
 
   render() {
     let queryCoords = [];
@@ -47,3 +35,16 @@ export class Route extends Component {
 }
 
 export default Route;
+
+/*constructor(props) {
+  super(props);
+  this.changeMode = this.changeMode.bind(this);
+  this.state = {
+    mode: ''
+  }
+
+  changeMode(newMode) {
+    this.setState({
+      mode: newMode
+    });
+  }*/

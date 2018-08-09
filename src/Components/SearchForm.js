@@ -4,12 +4,12 @@ export class SearchForm extends Component {
 
   state = {
     searchTextFrom: '',
-    searchTextTo: '',
+    //searchTo: '',
   }
 
   onSearchChange = e => {
     this.setState({ searchTextFrom: e.target.value });
-    this.setState({ searchTextTo: e.target.value });
+    //this.setState({ searchTo: e.target.value });
   }
 
   handleSubmit = e => {
@@ -29,8 +29,8 @@ export class SearchForm extends Component {
               ref={(input) => this.query = input}
               placeholder="Search..." />
 
-        <label className="adressTo" htmlFor="search">Kohdeosoite</label>
-        <input type="searvh"
+        <label className="addressTo" htmlFor="search">Kohdeosoite</label>
+        <input type="search"
               onChange={this.onSearchChange}
               name="search"
               ref={(input) => this.query = input}

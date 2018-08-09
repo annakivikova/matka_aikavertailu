@@ -3,27 +3,45 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 export class AppMap extends Component {
 
+  state = {
+    position: [60.16887, 24.93119],
+    positionTo: [60.16887, 24.93119],
+  }
+
+  handleUpdatedPosition() {
+      this.setState({
+      position: this.props.onUpdate,
+      positionTo: this.props.onUpdateTo,
+    })
+    console.log("PROPS POS"+this.props.onUpdate)
+  }
+
   render() {
-    let position = this.props.onUpdate;
-    let positionTo = this.props.onUpdateTo;
-    console.log('Map: ' + position);
+    console.log('Map: ' + this.state.position);
+    /*let position = this.props.onUpdate;
+    let positionTo = this.props.onUpdateTo;*/
+    let marker = (
+      <Marker position={this.state.position}>
+        <Popup>
+          Lähtöosoite
+        </Popup>
+      </Marker>
+    )
+
     return (
-      <Map center={position} zoom={13}>
+      <Map center={this.state.position} zoom={13}>
           <TileLayer
               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-        <Marker position={position}>
-          <Popup>
-            Lähtöosoite
-          </Popup>
-        </Marker>
-        <Marker position={positionTo}>
-          <Popup>
-            Kohdeosoite
-          </Popup>
-        </Marker>
+          {marker}
       </Map>
     )
   }
 }
+
+/*<Marker position={this.state.positionTo}>
+  <Popup>
+    Kohdeosoite
+  </Popup>
+</Marker>*/

@@ -2,25 +2,30 @@ import React, { Component } from 'react';
 
 import Route from './Components/Route';
 import { AppMap } from './Components/simple';
-import { Searching } from './Components/Searching';
+//import { Search } from './Components/Search';
+import SearchFrom from './Components/SearchFrom';
+import SearchTo from './Components/SearchTo';
 
 export class App extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.onUpdate = this.onUpdate.bind(this);
     this.onUpdateTo = this.onUpdateTo.bind(this);
+    this.myRef = React.createRef();
     this.state = {
-      updatedPos: '',
-      updatedPosTo: '',
+      updatedPos: [60.16887, 24.93119],
+      updatedPosTo: [60.16887, 24.93119],
     }
   }
 
   onUpdate(pos) {
     this.setState({
-      updatedPos: pos
+      updatedPos: pos,
     });
-  }
+    this.refs.appmap.handleUpdatedPosition();
+    }
+
 
   onUpdateTo(pos) {
     this.setState({
@@ -33,17 +38,24 @@ export class App extends Component {
     return (
       <div>
         <h3>Haku</h3>
-          <Searching
+          <SearchFrom
             onChange={this.onUpdate}
-            onChange={this.onUpdateTo}/>
-
-          <AppMap
-            onUpdate={this.state.updatedPos}
-            onUpdateTo={this.state.updatedPosTo}
           />
+
+          <SearchTo
+            onChange={this.onUpdateTo}
+          />
+
           <Route
             passCoords={[this.state.updatedPos, this.state.updatedPosTo]}
           />
+
+          <AppMap
+            ref="appmap"
+            onUpdate={this.state.updatedPos}
+            onUpdateTo={this.state.updatedPosTo}
+          />
+
       </div>
     )
   }
