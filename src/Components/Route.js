@@ -10,13 +10,35 @@ const client = new ApolloClient({
 
 export class Route extends Component {
 
-  render() {
+  state = {
+    position: [60.16887, 24.93119],
+    positionTo: [60.169438, 24.929283],
+  }
 
+  handleUpdatedCoordinates() {
+      this.setState({
+      position: this.props.onUpdate,
+      positionTo: this.props.onUpdateTo,
+    })
+    console.log("PROPS POS"+this.props.onUpdate)
+  }
+
+  render() {
+    /*let queryCoords = this.props.passCoords;
+    if (typeof this.props.passCoords !== 'undefined'){
+      queryCoords = [[60.168438, 24.9397302],[60.169438, 24.929283]];
+      console.log('queryCoords undefined, fixing... ');
+    }
+    else {
+      queryCoords = this.props.passCoords;
+      console.log('Coords okay... ')
+    };
+    console.log('HELLO! ' + queryCoords)*/
     return(
       <ApolloProvider client={client}>
         <div>
           <Mode />
-          <Routing />
+          <Routing passCoordsDown={[this.state.position, this.state.positionTo]}/>
         </div>
       </ApolloProvider>
     )
@@ -37,17 +59,6 @@ export default Route;
       mode: newMode
     });
   }
-
-  let queryCoords = [];
-  if (typeof this.props.passCoords !== 'undefined'){
-    queryCoords = [[60.168438, 24.9397302],[60.169438, 24.929283]];
-    console.log('queryCoords undefined, fixing... ');
-  }
-  else {
-    queryCoords = this.props.passCoords;
-    console.log('Coords okay... ')
-  };
-  console.log('HELLO! ' + queryCoords)
 
   <Routing
     passCoordsDown={queryCoords}
