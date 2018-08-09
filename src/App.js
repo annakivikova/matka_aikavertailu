@@ -31,6 +31,7 @@ export class App extends Component {
     this.setState({
       updatedPosTo: pos
     });
+    this.refs.appmap.handleUpdatedPosition();
   }
 
   render() {

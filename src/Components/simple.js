@@ -28,6 +28,14 @@ export class AppMap extends Component {
       </Marker>
     )
 
+    let markerTo = (
+      <Marker position={this.state.positionTo}>
+        <Popup>
+          Kohdeosoite
+        </Popup>
+      </Marker>
+    )
+
     return (
       <Map center={this.state.position} zoom={13}>
           <TileLayer
@@ -35,13 +43,8 @@ export class AppMap extends Component {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {marker}
+          {markerTo}
       </Map>
     )
   }
 }
-
-/*<Marker position={this.state.positionTo}>
-  <Popup>
-    Kohdeosoite
-  </Popup>
-</Marker>*/
