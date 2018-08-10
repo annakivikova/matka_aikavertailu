@@ -25,6 +25,7 @@ export class Route extends Component {
       mode: newMode
     });
     console.log('Mode is: ' + this.state.mode);
+    this.createMode(this.state.mode);
   }
 
   handleUpdatedCoordinates() {
@@ -35,12 +36,33 @@ export class Route extends Component {
     console.log("PROPS ROUTE " + this.props.passCoords)
   }
 
+  createMode(mode) {
+    if (mode === 'julkiset') {
+      this.setState({
+        mode: "BUS,TRAM,RAIL,SUBWAY,FERRY,WALK"
+      });
+    } else if (mode === 'auto') {
+      this.setState({
+        mode: "CAR,WALK"
+      });
+    } else if (mode === 'polkupyörä') {
+      this.setState({
+        mode: "BIKE"
+      });
+    }
+  }
+
   render() {
     return(
       <ApolloProvider client={client}>
         <div>
-          <Mode onChangedMode={this.handleChangedMode}/>
-          <Routing passCoordsDown={[this.state.position, this.state.positionTo]}/>
+          <Mode
+            onChangedMode={this.handleChangedMode}
+          />
+          <Routing
+            passCoordsDown={[this.state.position, this.state.positionTo]}
+            passModeDown={this.state.mode}
+          />
         </div>
       </ApolloProvider>
     )
