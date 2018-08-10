@@ -16,16 +16,13 @@ export class Route extends Component {
     this.state = {
       position: [60.16887, 24.93119],
       positionTo: [60.169438, 24.929283],
-      mode: '',
+      mode: 'WALK',
     }
   }
 
   handleChangedMode(newMode) {
-    this.setState({
-      mode: newMode
-    });
+    this.createMode(newMode);
     console.log('Mode is: ' + this.state.mode);
-    this.createMode(this.state.mode);
   }
 
   handleUpdatedCoordinates() {

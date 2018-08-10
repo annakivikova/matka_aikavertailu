@@ -39,7 +39,8 @@ export class App extends Component {
     console.log('updatedPos in component App is: ' + this.state.updatedPos + 'updatedPosTo in component App is: ' + this.state.updatedPosTo);
     return (
       <div>
-        <h3>Haku</h3>
+        <h3>Matka-aikavertailu</h3>
+        <h4>Haku</h4>
           <SearchFrom
             onChange={this.onUpdate}
           />
