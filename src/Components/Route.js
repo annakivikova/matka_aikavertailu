@@ -67,14 +67,3 @@ export class Route extends Component {
 }
 
 export default Route;
-
-/*let queryCoords = this.props.passCoords;
-if (typeof this.props.passCoords !== 'undefined'){
-  queryCoords = [[60.168438, 24.9397302],[60.169438, 24.929283]];
-  console.log('queryCoords undefined, fixing... ');
-}
-else {
-  queryCoords = this.props.passCoords;
-  console.log('Coords okay... ')
-};
-console.log('HELLO! ' + queryCoords)*/

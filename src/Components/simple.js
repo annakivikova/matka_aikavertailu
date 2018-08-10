@@ -18,8 +18,6 @@ export class AppMap extends Component {
 
   render() {
     console.log('Map: ' + this.state.position);
-    /*let position = this.props.onUpdate;
-    let positionTo = this.props.onUpdateTo;*/
     let marker = (
       <Marker position={this.state.position}>
         <Popup>
