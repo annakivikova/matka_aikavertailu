@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Route from './Components/Route';
 import { AppMap } from './Components/simple';
-//import { Search } from './Components/Search';
 import SearchFrom from './Components/SearchFrom';
 import SearchTo from './Components/SearchTo';
 

@@ -36,7 +36,7 @@ class SearchFrom extends Component {
   render() {
     console.log('pos in component SearchFrom is: lat ' + this.state.lat + ' and lng ' + this.state.lng);
     return (
-      <div onChange={this.onSearchUpdate}>
+      <div onSubmit={this.onSearchUpdate}>
         <SearchFormFrom
           onSearch={this.performSearch}
         />

@@ -10,34 +10,36 @@ const client = new ApolloClient({
 
 export class Route extends Component {
 
-  state = {
-    position: [60.16887, 24.93119],
-    positionTo: [60.169438, 24.929283],
+  constructor() {
+    super();
+    this.handleChangedMode = this.handleChangedMode.bind(this);
+    this.state = {
+      position: [60.16887, 24.93119],
+      positionTo: [60.169438, 24.929283],
+      mode: '',
+    }
+  }
+
+  handleChangedMode(newMode) {
+    this.setState({
+      mode: newMode
+    });
+    console.log('Mode is: ' + this.state.mode);
   }
 
   handleUpdatedCoordinates() {
-      this.setState({
-      position: this.props.passCoords[0],
-      positionTo: this.props.passCoords[1],
-    })
-    console.log("PROPS ROUTE"+this.props.passCoords)
+    this.setState({
+    position: this.props.passCoords[0],
+    positionTo: this.props.passCoords[1],
+  })
+    console.log("PROPS ROUTE " + this.props.passCoords)
   }
 
   render() {
-    /*let queryCoords = this.props.passCoords;
-    if (typeof this.props.passCoords !== 'undefined'){
-      queryCoords = [[60.168438, 24.9397302],[60.169438, 24.929283]];
-      console.log('queryCoords undefined, fixing... ');
-    }
-    else {
-      queryCoords = this.props.passCoords;
-      console.log('Coords okay... ')
-    };
-    console.log('HELLO! ' + queryCoords)*/
     return(
       <ApolloProvider client={client}>
         <div>
-          <Mode />
+          <Mode onChangedMode={this.handleChangedMode}/>
           <Routing passCoordsDown={[this.state.position, this.state.positionTo]}/>
         </div>
       </ApolloProvider>
@@ -47,19 +49,13 @@ export class Route extends Component {
 
 export default Route;
 
-/*constructor(props) {
-  super(props);
-  this.changeMode = this.changeMode.bind(this);
-  this.state = {
-    mode: ''
-  }
-
-  changeMode(newMode) {
-    this.setState({
-      mode: newMode
-    });
-  }
-
-  <Routing
-    passCoordsDown={queryCoords}
-  />*/
+/*let queryCoords = this.props.passCoords;
+if (typeof this.props.passCoords !== 'undefined'){
+  queryCoords = [[60.168438, 24.9397302],[60.169438, 24.929283]];
+  console.log('queryCoords undefined, fixing... ');
+}
+else {
+  queryCoords = this.props.passCoords;
+  console.log('Coords okay... ')
+};
+console.log('HELLO! ' + queryCoords)*/

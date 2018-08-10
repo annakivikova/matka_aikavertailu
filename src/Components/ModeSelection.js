@@ -1,41 +1,47 @@
 import React, { Component } from 'react';
 
-export default class Mode extends Component {
+class Mode extends Component {
 
-  /*constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
+  constructor() {
+    super();
+    this.onUpdatedMode = this.onUpdatedMode.bind(this);
+    this.handleChangedMode = this.handleChangedMode.bind(this);
+    this.state = {
+      mode: ''
+    }
   }
 
-  handleChange(e) {
-    const mode = e.target.value;
-    this.props.onChange(mode);
-  }*/
+  handleChangedMode() {
+    let selector = document.getElementById('modes');
+    let value = selector[selector.selectedIndex].value;
+    this.setState({
+      mode: value
+    })
+    console.log("VALUE " + value + "STATE " + this.state.mode);
+    this.onUpdatedMode();
+  }
+
+  onUpdatedMode() {
+    this.props.onChangedMode(this.state.mode)
+  }
 
   render() {
-    return(
+    return (
       <div>
-        <select id="modes" onChange={this.handleChange}>
-          <option value="bus">
-            Bus
+        <select id="modes" onClick={this.handleChangedMode}>
+          <option value="julkiset">
+            Julkiset
           </option>
-          <option value="tram">
-            Tram
+          <option value="auto">
+            Auto
           </option>
-          <option value="rail">
-            Rail
-          </option>
-          <option value="subway">
-            Subway
-          </option>
-          <option value="ferry">
-            Ferry
-          </option>
-          <option value="walk">
-            Walk
+          <option value="polkupyörä">
+            Polkupyörä
           </option>
         </select>
       </div>
-    )
+    );
   }
 }
+
+export default Mode;

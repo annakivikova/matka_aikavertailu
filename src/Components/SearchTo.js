@@ -36,7 +36,7 @@ class SearchTo extends Component {
   render() {
     console.log('pos in component SearchTo is: lat ' + this.state.lat + ' and lng ' + this.state.lng);
     return (
-      <div onChange={this.onSearchUpdate}>
+      <div onSubmit={this.onSearchUpdate}>
         <SearchFormTo
           onSearch={this.performSearch}
         />

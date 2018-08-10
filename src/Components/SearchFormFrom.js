@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 
 export class SearchFormFrom extends Component {
-  /*constructor() {
-    super()
-    this.onSearchChange = this.onSearchChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      searchText: ''
-    }
-  }*/
 
   state = {
     searchText: ''
